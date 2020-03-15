@@ -17,9 +17,10 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git . &&
     ./bin/install-mecab-ipadic-neologd -n -y && \
     rm -rf /usr/src/mecab-ipadic-neologd
 
-WORKDIR /var/src/
+WORKDIR /var/
 RUN pip install flask
+COPY . .
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD ["python", "server.py"]
+CMD ["python", "src/server.py"]
